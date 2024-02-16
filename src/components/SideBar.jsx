@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap";
 import logoSideBar from "../assets/logo.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   return (
@@ -21,13 +22,23 @@ const SideBar = () => {
               className="img-fluid w-75 mb-4"
             />
           </Col>
-          <p>
-            <i className="bi bi-house-door-fill me-2"></i>Home
-          </p>
+          <Link className="nav-link" to={"/"}>
+            <p>
+              <i className="bi bi-house-door-fill me-2"></i>Home
+            </p>
+          </Link>
+
           <Col>
             <p>
               <i className="bi bi-book-fill me-2"></i>Your Library
             </p>
+          </Col>
+          <Col>
+            <Link className="nav-link" to={"/Favorite"}>
+              <p>
+                <i className="bi bi-heart-fill me-2"></i>Your Favorites
+              </p>
+            </Link>
           </Col>
           <Col>
             <InputGroup className="mt-3">

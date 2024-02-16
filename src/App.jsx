@@ -3,6 +3,7 @@ import MidSection from "./components/MidSection";
 import SideBar from "./components/SideBar";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MyFavorite from "./components/MyFavorite";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Col xs={12} md={9} className="flex-grow-1">
             <Routes>
               <Route path="/" element={<MidSection />} />
+              <Route path="/Favorite" element={<MyFavorite />} />
             </Routes>
           </Col>
         </Row>
