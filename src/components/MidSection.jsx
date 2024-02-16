@@ -5,8 +5,8 @@ import Player from "./Player";
 
 const MidSection = () => {
   return (
-    <>
-      <Container className="vh-100">
+    <div className="vh-100">
+      <Container>
         <MainLinks />
         <Row className="flex-column gy-3 ">
           <Col>
@@ -17,7 +17,7 @@ const MidSection = () => {
       <Container fluid>
         <Player />
       </Container>
-    </>
+    </div>
   );
 };
 
