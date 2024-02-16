@@ -27,7 +27,6 @@ const SideBar = () => {
               <i className="bi bi-house-door-fill me-2"></i>Home
             </p>
           </Link>
-
           <Col>
             <p>
               <i className="bi bi-book-fill me-2"></i>Your Library
