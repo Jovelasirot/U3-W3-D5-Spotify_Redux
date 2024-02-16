@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"; // Import React and useEffect
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMusicAction } from "../redux/actions";
@@ -12,7 +12,6 @@ const SongGallery = ({ playlist }) => {
     dispatch(fetchMusicAction(playlist));
   }, [dispatch, playlist]);
 
-  // Extracting state from Redux store
   const musicData = useSelector((state) => state.music.results);
   const loading = useSelector((state) => state.music.loading);
   const error = useSelector((state) => state.music.error);

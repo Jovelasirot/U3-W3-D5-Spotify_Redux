@@ -1,32 +1,32 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { addToFavAction } from "../redux/actions";
 
 const Player = () => {
   const selectedSong = useSelector((state) => state.music.selected);
   const dispatch = useDispatch();
 
-  // const toggleFavorite = () => {
-  //   dispatch(addToFavAction(selectedSong));
-  // };
+  const toggleFavorite = () => {
+    dispatch(addToFavAction(selectedSong));
+  };
 
   return (
     <Container fluid className="mx-0 ps-0">
       <Row className="bg-dark text-light">
         <Col className="d-flex align-items-center">
-          {selectedSong && (
+          {selectedSong.length !== 0 && selectedSong.album && (
             <>
-              <img src={selectedSong.album.cover_medium} alt="" />
-              <div>
+              <img src={selectedSong.album.cover} alt="" />
+              <div className="ms-2">
                 <p>{selectedSong.title}</p>
-
                 {selectedSong.artist && <p>{selectedSong.artist.name}</p>}
               </div>
             </>
           )}
         </Col>
         <Col className="d-flex align-items-center justify-content-center">
-          <div>
+          <div onClick={toggleFavorite}>
             <i
               className={`bi ${
                 selectedSong.isFavorite ? "bi-heart-fill" : "bi-heart"
