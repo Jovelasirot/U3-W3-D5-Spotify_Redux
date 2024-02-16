@@ -34,7 +34,7 @@ export const fetchMusicAction = (query) => {
   };
 };
 
-export const addToFavAction = (data) => ({
+export const selectSongAction = (data) => ({
   type: SONG_SELECTED,
   payload: data,
 });

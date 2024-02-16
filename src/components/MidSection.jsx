@@ -2,7 +2,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import MainLinks from "./MainLInks";
 import SongGallery from "./SongGallery";
 import Player from "./Player";
-import { useState } from "react";
 
 const MidSection = () => {
   return (
@@ -14,6 +13,9 @@ const MidSection = () => {
             <SongGallery playlist="Joji" />
           </Col>
         </Row>
+      </Container>
+      <Container fluid>
+        <Player />
       </Container>
     </>
   );

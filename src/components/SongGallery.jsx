@@ -1,30 +1,23 @@
-import { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react"; // Import React and useEffect
+import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMusicAction } from "../redux/actions";
 import SingleMusic from "./SingleMusic";
-import Player from "./Player";
 
 // eslint-disable-next-line react/prop-types
 const SongGallery = ({ playlist }) => {
-  const [selectedSong, setSelectedSong] = useState(null);
-  const handleSelectSong = (song) => {
-    setSelectedSong(song);
-    console.log("ffffff", song);
-  };
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchMusicAction(playlist));
   }, [dispatch, playlist]);
 
+  // Extracting state from Redux store
   const musicData = useSelector((state) => state.music.results);
-  const loading = useSelector((state) => state.loading);
-  const error = useSelector((state) => state.error);
-
+  const loading = useSelector((state) => state.music.loading);
+  const error = useSelector((state) => state.music.error);
   return (
-    <>
+    <Container fluid>
       <h1 className="text-light">{playlist}</h1>
       {loading ? (
         <p>Loading...</p>
@@ -37,10 +30,7 @@ const SongGallery = ({ playlist }) => {
       ) : (
         <p className="text-light">No data available</p>
       )}
-      <Container fluid className="mx-0 ps-0">
-        <Player />
-      </Container>
-    </>
+    </Container>
   );
 };
 

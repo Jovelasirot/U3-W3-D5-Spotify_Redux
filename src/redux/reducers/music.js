@@ -10,7 +10,7 @@ const initialState = {
   results: [],
   error: null,
   loading: false,
-  seletected: [],
+  selected: {},
 };
 
 const musicReducers = (state = initialState, action) => {
@@ -43,7 +43,7 @@ const musicReducers = (state = initialState, action) => {
     case SONG_SELECTED:
       return {
         ...state,
-        seletected: [...state.content, action.payload],
+        selected: action.payload,
       };
 
     default:

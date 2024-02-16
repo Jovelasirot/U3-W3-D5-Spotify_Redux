@@ -1,15 +1,17 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addToFavAction } from "../redux/actions";
+import { selectSongAction } from "../redux/actions";
 
-// eslint-disable-next-line react/prop-types
 const SingleMusic = ({ data }) => {
   const dispatch = useDispatch();
+
   const handleSongClick = (song) => {
-    dispatch(addToFavAction(song));
+    dispatch(selectSongAction(song));
     console.log(song);
   };
+
   return (
     <>
       {data.slice(0, 4).map((song) => (
@@ -17,7 +19,8 @@ const SingleMusic = ({ data }) => {
           <div className="d-flex flex-column">
             <img src={song.album.cover_medium} alt={song.title} />
             <p className="text-center">{song.title}</p>
-            <p className="text-center">{song.id}</p>
+
+            {song.artist && <p className="text-center">{song.artist.name}</p>}
           </div>
         </Col>
       ))}
@@ -28,10 +31,14 @@ const SingleMusic = ({ data }) => {
 SingleMusic.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       album: PropTypes.shape({
         cover_medium: PropTypes.string.isRequired,
       }),
       title: PropTypes.string.isRequired,
+      artist: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }),
     })
   ).isRequired,
 };
