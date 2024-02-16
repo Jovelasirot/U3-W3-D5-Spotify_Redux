@@ -5,11 +5,14 @@ import { addToFavAction } from "../redux/actions";
 
 const Player = () => {
   const selectedSong = useSelector((state) => state.music.selected);
+  const favorites = useSelector((state) => state.fav.content);
   const dispatch = useDispatch();
 
   const toggleFavorite = () => {
     dispatch(addToFavAction(selectedSong));
   };
+
+  const isFavorite = favorites.some((song) => song.id === selectedSong.id);
 
   return (
     <Container fluid className="mx-0 ps-0">
@@ -27,11 +30,11 @@ const Player = () => {
         </Col>
         <Col className="d-flex align-items-center justify-content-center">
           <div onClick={toggleFavorite}>
-            <i
-              className={`bi ${
-                selectedSong.isFavorite ? "bi-heart-fill" : "bi-heart"
-              }`}
-            ></i>
+            {isFavorite ? (
+              <i className="bi bi-heart-fill"></i>
+            ) : (
+              <i className="bi bi-heart"></i>
+            )}
           </div>
           <div>
             <i className="bi bi-chevron-double-left"></i>

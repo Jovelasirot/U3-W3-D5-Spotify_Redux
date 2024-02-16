@@ -5,6 +5,7 @@ export const TURN_OFF_LOADING = "TURN_OFF_LOADING";
 export const SONG_SELECTED = "SONG_SELECTED";
 export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
+export const RESET_FAV_LIST = "RESET_FAV_LIST";
 
 export const fetchMusicAction = (query) => {
   return async (dispatch, getState) => {
@@ -49,4 +50,8 @@ export const addToFavAction = (song) => ({
 export const removeFromFavAction = (songId) => ({
   type: REMOVE_FROM_FAVORITES,
   payload: songId,
+});
+
+export const resetFavList = () => ({
+  type: RESET_FAV_LIST,
 });

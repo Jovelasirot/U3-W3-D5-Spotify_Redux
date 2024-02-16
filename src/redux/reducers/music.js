@@ -4,8 +4,6 @@ import {
   TURN_OFF_LOADING,
   TURN_ON_LOADING,
   SONG_SELECTED,
-  ADD_TO_FAVORITES,
-  REMOVE_FROM_FAVORITES,
 } from "../actions";
 
 const initialState = {
@@ -13,7 +11,6 @@ const initialState = {
   error: null,
   loading: false,
   selected: {},
-  favorites: [],
 };
 
 const musicReducers = (state = initialState, action) => {
@@ -47,18 +44,6 @@ const musicReducers = (state = initialState, action) => {
       return {
         ...state,
         selected: action.payload,
-      };
-
-    case ADD_TO_FAVORITES:
-      return {
-        ...state,
-        favorites: [...state.favorites, action.payload],
-      };
-
-    case REMOVE_FROM_FAVORITES:
-      return {
-        ...state,
-        favorites: state.favorites.filter((song) => song.id !== action.payload),
       };
 
     default:
