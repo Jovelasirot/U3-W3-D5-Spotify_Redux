@@ -9,6 +9,7 @@ const Player = () => {
   const dispatch = useDispatch();
 
   const toggleFavorite = () => {
+    alert("song added to favorites");
     dispatch(addToFavAction(selectedSong));
   };
 
@@ -25,17 +26,17 @@ const Player = () => {
                 <p>{selectedSong.title}</p>
                 {selectedSong.artist && <p>{selectedSong.artist.name}</p>}
               </div>
+              <div onClick={toggleFavorite} className="fs-4 ms-">
+                {isFavorite ? (
+                  <i className="bi bi-heart-fill"></i>
+                ) : (
+                  <i className="bi bi-heart"></i>
+                )}
+              </div>
             </>
           )}
         </Col>
-        <Col className="d-flex align-items-center justify-content-center">
-          <div onClick={toggleFavorite}>
-            {isFavorite ? (
-              <i className="bi bi-heart-fill"></i>
-            ) : (
-              <i className="bi bi-heart"></i>
-            )}
-          </div>
+        <Col className="d-flex align-items-center  fs-4 ">
           <div>
             <i className="bi bi-chevron-double-left"></i>
           </div>

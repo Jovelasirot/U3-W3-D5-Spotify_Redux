@@ -5,10 +5,16 @@ import Player from "./Player";
 
 const MidSection = () => {
   return (
-    <div className="vh-100">
+    <div>
       <Container>
         <MainLinks />
         <Row className="flex-column gy-3 ">
+          <Col>
+            <SongGallery playlist="Joji" />
+          </Col>
+          <Col>
+            <SongGallery playlist="Joji" />
+          </Col>
           <Col>
             <SongGallery playlist="Joji" />
           </Col>
